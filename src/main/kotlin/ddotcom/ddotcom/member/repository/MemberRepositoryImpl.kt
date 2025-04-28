@@ -1,6 +1,6 @@
-package ddotcom.ddotcom.repository
+package ddotcom.ddotcom.member.repository
 
-import ddotcom.ddotcom.entity.Member
+import ddotcom.ddotcom.member.entity.Member
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.Criteria
 import org.springframework.data.mongodb.core.query.Query

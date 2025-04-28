@@ -1,9 +1,9 @@
-package ddotcom.ddotcom.controller
+package ddotcom.ddotcom.member.controller
 
-import ddotcom.ddotcom.dto.ResponseWrapper
-import ddotcom.ddotcom.dto.UnivDtoRequest
-import ddotcom.ddotcom.entity.University
-import ddotcom.ddotcom.service.UnivService
+import ddotcom.ddotcom.member.dto.ResponseWrapper
+import ddotcom.ddotcom.member.dto.UnivDtoRequest
+import ddotcom.ddotcom.member.entity.University
+import ddotcom.ddotcom.member.service.UnivService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

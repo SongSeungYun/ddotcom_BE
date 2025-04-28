@@ -1,6 +1,6 @@
-package ddotcom.ddotcom.repository
+package ddotcom.ddotcom.member.repository
 
-import ddotcom.ddotcom.entity.Member
+import ddotcom.ddotcom.member.entity.Member
 
 interface MemberRepository{
     fun findMemberByLoginId(loginId: String): Member?

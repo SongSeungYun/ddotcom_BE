@@ -1,4 +1,4 @@
-package ddotcom.ddotcom.entity
+package ddotcom.ddotcom.member.entity
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

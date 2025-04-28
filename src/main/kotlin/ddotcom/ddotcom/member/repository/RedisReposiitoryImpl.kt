@@ -1,4 +1,4 @@
-package ddotcom.ddotcom.repository
+package ddotcom.ddotcom.member.repository
 
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.core.ValueOperations

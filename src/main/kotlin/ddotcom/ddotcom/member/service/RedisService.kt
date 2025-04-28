@@ -1,6 +1,6 @@
-package ddotcom.ddotcom.service
+package ddotcom.ddotcom.member.service
 
-import ddotcom.ddotcom.repository.RedisRepositoryImpl
+import ddotcom.ddotcom.member.repository.RedisRepositoryImpl
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

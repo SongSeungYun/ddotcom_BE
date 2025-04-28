@@ -1,7 +1,7 @@
-package ddotcom.ddotcom.service
+package ddotcom.ddotcom.member.service
 
-import ddotcom.ddotcom.dto.UnivDtoRequest
-import ddotcom.ddotcom.entity.University
+import ddotcom.ddotcom.member.dto.UnivDtoRequest
+import ddotcom.ddotcom.member.entity.University
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.core.query.Criteria

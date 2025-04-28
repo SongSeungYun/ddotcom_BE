@@ -1,12 +1,12 @@
-package ddotcom.ddotcom.service
+package ddotcom.ddotcom.member.service
 
 //import ddotcom.ddotcom.database.MultipleMongoConfig
 import ddotcom.ddotcom.common.authority.JwtTokenProvider
 import ddotcom.ddotcom.common.exception.InvalidInputException
 import ddotcom.ddotcom.common.status.ROLE
-import ddotcom.ddotcom.dto.*
-import ddotcom.ddotcom.entity.Member
-import ddotcom.ddotcom.repository.MemberRepositoryImpl
+import ddotcom.ddotcom.member.dto.*
+import ddotcom.ddotcom.member.entity.Member
+import ddotcom.ddotcom.member.repository.MemberRepositoryImpl
 //import ddotcom.ddotcom.member.repository.MemberRepository
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.data.mongodb.core.MongoTemplate

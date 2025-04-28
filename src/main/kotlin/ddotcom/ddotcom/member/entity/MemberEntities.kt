@@ -1,7 +1,7 @@
-package ddotcom.ddotcom.entity
+package ddotcom.ddotcom.member.entity
 
 import ddotcom.ddotcom.common.status.ROLE
-import ddotcom.ddotcom.dto.MemberDtoResponse
+import ddotcom.ddotcom.member.dto.MemberDtoResponse
 import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.Field

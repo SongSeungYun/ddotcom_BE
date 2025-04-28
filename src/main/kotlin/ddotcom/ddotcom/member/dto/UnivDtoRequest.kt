@@ -1,4 +1,4 @@
-package ddotcom.ddotcom.dto
+package ddotcom.ddotcom.member.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.NotBlank

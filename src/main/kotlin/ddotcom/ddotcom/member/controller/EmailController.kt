@@ -1,8 +1,8 @@
-package ddotcom.ddotcom.controller
+package ddotcom.ddotcom.member.controller
 
-import ddotcom.ddotcom.dto.EmailDtoRequest
-import ddotcom.ddotcom.dto.ResponseWrapper
-import ddotcom.ddotcom.service.EmailService
+import ddotcom.ddotcom.member.dto.EmailDtoRequest
+import ddotcom.ddotcom.member.dto.ResponseWrapper
+import ddotcom.ddotcom.member.service.EmailService
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

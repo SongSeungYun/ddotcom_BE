@@ -1,4 +1,4 @@
-package ddotcom.ddotcom.dto
+package ddotcom.ddotcom.member.dto
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.servlet.http.HttpServletRequest

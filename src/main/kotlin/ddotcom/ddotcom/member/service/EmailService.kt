@@ -1,8 +1,8 @@
-package ddotcom.ddotcom.service
+package ddotcom.ddotcom.member.service
 
 import ddotcom.ddotcom.common.status.ErrorCode
 import ddotcom.ddotcom.common.status.UserSignUpResponseCode
-import ddotcom.ddotcom.dto.ResponseWrapper
+import ddotcom.ddotcom.member.dto.ResponseWrapper
 import ddotcom.ddotcom.exception.CustomException
 import jakarta.mail.MessagingException
 import jakarta.mail.internet.MimeMessage

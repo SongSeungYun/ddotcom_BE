@@ -1,7 +1,7 @@
 //package ddotcom.ddotcom.member.controller
 //
 //import ddotcom.ddotcom.dto.MemberDtoRequest
-//import ddotcom.ddotcom.service.MemberService
+//import ddotcom.ddotcom.member.service.MemberService
 //import org.springframework.web.bind.annotation.PostMapping
 //import org.springframework.web.bind.annotation.RequestBody
 //import org.springframework.web.bind.annotation.RequestMapping

@@ -1,4 +1,4 @@
-package ddotcom.ddotcom.repository
+package ddotcom.ddotcom.member.repository
 
 interface RedisRepository {
     fun getData(key: String): String?
