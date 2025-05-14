@@ -22,14 +22,22 @@ class SecurityConfig{
     fun securityFilterChain(http: HttpSecurity, jwtAuthFilter: JwtAuthFilter): SecurityFilterChain {
         http
             .cors { it.configurationSource(corsConfigurationSource()) }
-            .csrf { it.disable() } // CSRF 비활성화
+            .csrf { it.disable() }
             .authorizeHttpRequests { auth ->
                 auth.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                auth.requestMatchers("/api/member/login","/api/member/signup", "/api/member/check-login-id", "/api/member/verify-email", "/api/member/check-nickname","/error").permitAll()
-                auth.requestMatchers("/api/member/**").hasAuthority("MEMBER")
+                auth.requestMatchers(
+                    "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/v3/api-docs.yaml"
+                ).permitAll()
+                auth.requestMatchers(
+                    "/api/member/login", "/api/member/signup", "/api/member/check-login-id",
+                    "/api/member/verify-email", "/api/member/check-nickname", "/error"
+                ).permitAll()
                 auth.requestMatchers("/api/email/**").permitAll()
                 auth.requestMatchers("/api/university/find", "/api/university/dormitories").permitAll()
                 auth.requestMatchers("/api/university/add").hasAuthority("ADMIN")
+                auth.requestMatchers("/api/member/**").hasAuthority("MEMBER")
+
+                // ✅ 마지막에 anyRequest()
                 auth.anyRequest().authenticated()
             }
             .sessionManagement { session ->
