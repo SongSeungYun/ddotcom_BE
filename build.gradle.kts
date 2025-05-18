@@ -50,6 +50,8 @@ dependencies {
 	implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
 	//swagger ui 설정
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+	//웹소켓(채팅 기능)
+	implementation("org.springframework.boot:spring-boot-starter-websocket")
 }
 
 kotlin {
