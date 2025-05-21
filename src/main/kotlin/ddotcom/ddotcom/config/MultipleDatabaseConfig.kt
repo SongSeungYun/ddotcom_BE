@@ -114,4 +114,25 @@ class MultipleDatabaseConfig(
     ): MongoTemplate {
         return createMongoTemplate(mongoDatabaseFactory, mappingMongoConverter)
     }
+
+    // Chatroom Database 설정
+    @Bean(name = ["chatDatabaseFactory"])
+    fun chatDatabaseFactory(): MongoDatabaseFactory {
+        return createDatabaseFactory("chatroom")
+    }
+
+    @Bean(name = ["chatMappingMongoConverter"])
+    fun chatMappingMongoConverter(
+        @Qualifier("chatDatabaseFactory") mongoDatabaseFactory: MongoDatabaseFactory
+    ): MappingMongoConverter {
+        return createMappingMongoConverter(mongoDatabaseFactory)
+    }
+
+    @Bean(name = ["chatMongoTemplate"])
+    fun chatMongoTemplate(
+        @Qualifier("chatDatabaseFactory") mongoDatabaseFactory: MongoDatabaseFactory,
+        @Qualifier("chatMappingMongoConverter") mappingMongoConverter: MappingMongoConverter
+    ): MongoTemplate {
+        return createMongoTemplate(mongoDatabaseFactory, mappingMongoConverter)
+    }
 }
