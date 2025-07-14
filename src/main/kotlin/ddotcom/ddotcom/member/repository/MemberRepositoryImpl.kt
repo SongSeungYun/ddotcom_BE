@@ -11,6 +11,10 @@ class MemberRepositoryImpl(
     private val mongoTemplate: MongoTemplate
 ) : MemberRepository {
 
+    override fun findById(id: String): Member? {
+        return mongoTemplate.findById(id, Member::class.java, "member_info")
+    }
+
     override fun findMemberByLoginId(loginId: String): Member? {
         val query = Query(Criteria.where("loginId").`is`(loginId))
         return mongoTemplate.findOne(query, Member::class.java, "member_info")

@@ -10,20 +10,21 @@ import org.springframework.stereotype.Repository
 class ChatRoomRepositoryImpl(
     private val mongoTemplate: MongoTemplate
 ) : ChatRoomRepository {
-    override fun create(chatRoom: ChatRoom): ChatRoom =
-        mongoTemplate.insert(chatRoom)
 
-    override fun findById(id: String): ChatRoom? =
-        mongoTemplate.findById(id, ChatRoom::class.java)
+    override fun save(chatRoom: ChatRoom): ChatRoom {
+        return mongoTemplate.save(chatRoom)
+    }
 
-    override fun findAll(): List<ChatRoom> =
-        mongoTemplate.findAll(ChatRoom::class.java)
+    override fun findById(id: String): ChatRoom? {
+        return mongoTemplate.findById(id, ChatRoom::class.java)
+    }
 
-    override fun update(chatRoom: ChatRoom): ChatRoom =
-        mongoTemplate.save(chatRoom)
+    override fun delete(chatRoom: ChatRoom) {
+        mongoTemplate.remove(chatRoom)
+    }
 
-    override fun deleteById(id: String) {
-        val query = Query(Criteria.where("_id").`is`(id))
-        mongoTemplate.remove(query, ChatRoom::class.java)
+    override fun findByParticipantIdsContaining(memberId: String): List<ChatRoom> {
+        val query = Query(Criteria.where("participantIds").`in`(memberId))
+        return mongoTemplate.find(query, ChatRoom::class.java)
     }
 }
