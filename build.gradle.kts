@@ -52,6 +52,8 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 	//웹소켓(채팅 기능)
 	implementation("org.springframework.boot:spring-boot-starter-websocket")
+	//코틀린 serialization
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }
 
 kotlin {
@@ -70,4 +72,9 @@ noArg {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+// Java 9+ 모듈 시스템 호환성 문제를 해결하기 위해 JVM 옵션 추가
+tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
+    jvmArgs = listOf("--add-opens=java.base/java.time=ALL-UNNAMED")
 }

@@ -88,14 +88,14 @@ class MemberService(
         // loginId로 회원 조회
         val query = Query(Criteria.where("loginId").`is`(loginDto.loginId))
         val member = memberMongoTemplate.findOne(query, Member::class.java, "member_info")
-
+        //System.out.println(loginDto.loginId+" "+loginDto.password+" "+member!!.loginId+" "+member!!.password)
         // 아이디 존재 여부 확인
         if (member == null || !passwordEncoder.matches(loginDto.password, member.password)) {
             return "잘못된 로그인 아이디 또는 비밀번호입니다."
         }
 
-        // JWT 토큰 생성
-        return jwtTokenProvider.generateToken(member.loginId, listOf(member.role.name))
+        // JWT 토큰 생성 (이제 loginId 대신 _id를 토큰의 주체로 사용)
+        return jwtTokenProvider.generateToken(member._id!!, listOf(member.role.name))
     }
 
     fun updateLoginId(username: String, loginIdUpdateRequest: LoginIdUpdateRequest) {

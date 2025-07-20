@@ -4,6 +4,7 @@ import ddotcom.ddotcom.chatroom.dto.ChatRoomCreateRequest
 import ddotcom.ddotcom.chatroom.entity.ChatRoom
 import ddotcom.ddotcom.chatroom.repository.ChatRoomRepository
 import ddotcom.ddotcom.member.repository.MemberRepository
+import org.springframework.security.access.AccessDeniedException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.lang.IllegalArgumentException
@@ -16,9 +17,21 @@ class ChatRoomService(
 
     @Transactional
     fun createChatRoom(request: ChatRoomCreateRequest, authenticatedUserId: String): ChatRoom {
+        // 0. 중복 생성 방지: 해당 productId로 생성된 채팅방이 이미 있는지 확인
+        chatRoomRepository.findByProductId(request.productId)?.let {
+            throw IllegalStateException("이미 해당 상품에 대한 채팅방이 존재합니다.")
+        }
+
+        // [디버깅 로그] 실제로 비교되는 두 값을 서버 콘솔에 출력합니다.
+        println("--- DEBUG --- ")
+        println("Authenticated User ID (from Token): $authenticatedUserId")
+        println("Leader ID (from Request Body):    ${request.leaderId}")
+        println("Are they equal? ${authenticatedUserId == request.leaderId}")
+        println("-------------")
+
         // 1. 보안 검증: 요청을 보낸 사용자가 DTO에 명시된 리더와 일치하는지 확인
         if (authenticatedUserId != request.leaderId) {
-            throw IllegalAccessException("채팅방 생성은 리더로 지정된 사용자 본인만 가능합니다.")
+            throw AccessDeniedException("채팅방 생성은 리더로 지정된 사용자 본인만 가능합니다.")
         }
 
         // 2. 유효성 검증: 리더로 지정된 사용자가 실제 DB에 존재하는지 확인
