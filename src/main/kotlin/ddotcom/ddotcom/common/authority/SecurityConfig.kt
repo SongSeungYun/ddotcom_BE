@@ -36,6 +36,9 @@ class SecurityConfig{
                 auth.requestMatchers("/api/university/find", "/api/university/dormitories").permitAll()
                 auth.requestMatchers("/api/university/add").hasAuthority("ADMIN")
                 auth.requestMatchers("/api/member/**").hasAuthority("MEMBER")
+                //stomp
+                auth.requestMatchers("/ws-chat/**").permitAll()
+                auth.requestMatchers("/ws-chat").permitAll()
 
                 // ✅ 마지막에 anyRequest()
                 auth.anyRequest().authenticated()
@@ -51,7 +54,7 @@ class SecurityConfig{
     @Bean
     fun corsConfigurationSource(): CorsConfigurationSource {
         val configuration = CorsConfiguration()
-        configuration.allowedOriginPatterns = listOf("http://localhost:3000") // React 개발 서버 주소
+        configuration.allowedOriginPatterns = listOf("http://localhost:3000","http://localhost:8080","https://jiangxy.github.io") // React 개발 서버 주소
         configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS") // 허용할 HTTP 메서드
         configuration.allowedHeaders = listOf("*")
         configuration.allowCredentials = true
